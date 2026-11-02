@@ -97,15 +97,6 @@ class Rotor:
         data = input("Please enter Washout: ")
         self.Washout = ((float(data)) * math.pi / 180) if data else None
 
-        #data = input("Please enter slope of airfoil lift curve at 0 Mach: ")
-        #self.a = float(data) if data else None
-
-        data = input("Please enter aifoil induced drag coefficient: ")
-        self.k = float(data) if data else None
-
-        data = input("Please enter airfoil coefficient of induced drag: ")
-        self.sect_c_d0 = float(data) if data else None
-
         data = input("Please enter chord at root: ")
         self.ch_root = float(data) if data else None
 
@@ -143,6 +134,8 @@ class Rotor:
         self.calculate()
 
     def calculate(self):
+
+        self.airfoil = 'naca0012'
 
         q = 10
         while q>0:
@@ -210,7 +203,6 @@ class Rotor:
                     print("Data insufficient.")
 
         self.applySolidity()
-        print("Collectivepitch=", self.collectivePitch)
 
         #print("Please enter slope at 0 mach and 0 lift AOA in degrees.")
 
