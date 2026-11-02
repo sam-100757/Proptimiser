@@ -1,2 +1,2 @@
 # Proptimiser
-A python based propeller optimising tool (work in progress)
+A python based propeller calculator (optimising tool: work in progress).
