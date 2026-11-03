@@ -1,6 +1,8 @@
 import math
 print("Please use meters and kilograms wherever unspecified.")
 
+##this programme finds the relevant parameters at the height of Mt Everest.
+
 class Rotor:
     def __init__(self):
         #self.c = None
