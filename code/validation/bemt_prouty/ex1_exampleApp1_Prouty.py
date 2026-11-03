@@ -269,7 +269,6 @@ class Rotor:
         tempRemoved = np.trapezoid(removedCT_Values, r)
 
         self.c_T = c_T_iter1 - tempRemoved
-        self.c_T = 0.00719
 
         ### COEFFICIENT OF THRUST ###
 
