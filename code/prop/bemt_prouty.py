@@ -395,7 +395,7 @@ class Rotor:
         DlxCtbySol = 0
         DlxCtbySol = (self.diskLoad * self.c_TdivSol) / 47.88
 
-        if (DlxCtbySol<0.4788 or DlxCtbySol>63.2016):  #from 0.01 lb/ft2 to 1.32lb/ft2 (approximated range from fig 1.34; page 58, prouty)
+        if (DlxCtbySol<0.01 or DlxCtbySol>1.32):  #from 0.01 lb/ft2 to 1.32lb/ft2 (approximated range from fig 1.34; page 58, prouty)
             print("Range invalid for empirical correction for tip vortex interference.")
             exit()
         else:
@@ -435,12 +435,6 @@ class Rotor:
         print("Power (hp): ", self.Power / 745.7)
         print("FOM: ", self.Fom)
 
-
-        '''self.applyWeightArm()
-
-        self.applyConing()
-        print("Weight arm: ", self.M_w)
-        print("coning angle: ", self.a0)'''
 
 
 #basic elementary functions
@@ -506,45 +500,6 @@ class Rotor:
             and self.omega is not None
         ):
             self.Rad = self.v_tip / self.omega
-
-    '''def applyConing(self):
-
-        if (
-            self.a0 is None
-            and self.rho is not None
-            and self.M_w is not None
-            and self.omega is not None
-            and self.Rad is not None
-            and self.I_b is not None
-        ):
-            r = np.linspace(self.cutoutRatio, 1, 100)
-            M_liftInt = 0
-
-            for num in r:
-
-                RadRatio, chordAtStn, chordRatio, localMach, localSlope, localPitch, localv_i, localAOA, localV_rel, localRe, localcl = self.applyElements(num)
-
-                integral = (chordAtStn * localcl * RadRatio**3)
-                M_liftInt += integral
-            
-            self.a0 = ((self.rho * M_liftInt * (self.Rad**4)) / (2 * self.I_b)) + (self.M_w / (self.I_b * self.omega**2))
-
-            print("Coning angle is ", self.a0)
-
-    def applyWeightArm(self):
-        if (
-            self.I_b is None
-            and self.moi is not None
-            and self.N_b is not None
-        ):
-            self.I_b = self.moi / self.N_b
-    
-        if (
-            self.M_w is None
-            and self.Rad is not None
-            and self.I_b is not None
-        ):
-            self.M_w = (3 * g * self.I_b) / (2 * self.Rad)'''
 
     def applyTaperRatio(self):
         if (

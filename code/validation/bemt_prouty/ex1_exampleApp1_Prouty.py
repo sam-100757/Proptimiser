@@ -352,7 +352,7 @@ class Rotor:
         DlxCtbySol = 0
         DlxCtbySol = (self.diskLoad * self.c_TdivSol) / 47.88
 
-        if (DlxCtbySol<0.4788 or DlxCtbySol>63.2016):  #from 0.01 lb/ft2 to 1.32lb/ft2 (approximated range from fig 1.34; page 58, prouty)
+        if (DlxCtbySol<0.01 or DlxCtbySol>1.32):  #from 0.01 lb/ft2 to 1.32lb/ft2 (approximated range from fig 1.34; page 58, prouty)
             print("Range invalid for empirical correction for tip vortex interference.")
             exit()
         else:
